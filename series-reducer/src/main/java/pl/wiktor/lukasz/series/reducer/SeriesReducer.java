@@ -15,4 +15,11 @@ public class SeriesReducer {
     public static List<Point> reduce(List<Point> points, double epsilon) {
         return null;
     }
+    
+    static double distance(Point p, Point lineStart, Point lineEnd) {
+        double dx = lineStart.getX() - lineEnd.getX();
+        double dy = lineStart.getY() - lineEnd.getY();
+        return Math.abs(dy * p.getX() - dx * p.getY() + lineStart.getX() * lineEnd.getY() - lineEnd.getX() * lineStart.getY()) 
+               / Math.sqrt(dx*dx + dy*dy);
+    }
 }
