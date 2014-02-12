@@ -61,6 +61,6 @@ public class PointImpl implements Point {
 
     @Override
     public String toString() {
-        return "(" + x + ", " + y + ")";
+        return "[" + x + ", " + y + "]";
     }
 }
