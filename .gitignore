@@ -3,3 +3,6 @@
 /.classpath
 /.settings
 /target
+
+#TestNG
+/test-output
