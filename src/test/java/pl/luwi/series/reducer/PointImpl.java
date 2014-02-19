@@ -1,4 +1,6 @@
-package pl.wiktor.lukasz.series.reducer;
+package pl.luwi.series.reducer;
+
+import pl.luwi.series.reducer.Point;
 
 public class PointImpl implements Point {
     

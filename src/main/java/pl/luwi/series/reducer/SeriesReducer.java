@@ -1,4 +1,4 @@
-package pl.wiktor.lukasz.series.reducer;
+package pl.luwi.series.reducer;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,13 +1,16 @@
-package pl.wiktor.lukasz.series.reducer;
+package pl.luwi.series.reducer;
 
 import static java.util.Arrays.asList;
-import static pl.wiktor.lukasz.series.reducer.PointImpl.p;
+import static pl.luwi.series.reducer.PointImpl.p;
 
 import java.util.List;
 
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
+import pl.luwi.series.reducer.Point;
+import pl.luwi.series.reducer.SeriesReducer;
 
 public class SeriesReducerTest {
   

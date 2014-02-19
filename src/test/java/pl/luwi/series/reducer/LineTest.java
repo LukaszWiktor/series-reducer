@@ -1,10 +1,13 @@
-package pl.wiktor.lukasz.series.reducer;
+package pl.luwi.series.reducer;
 
-import static pl.wiktor.lukasz.series.reducer.PointImpl.p;
+import static pl.luwi.series.reducer.PointImpl.p;
 
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
+import pl.luwi.series.reducer.Line;
+import pl.luwi.series.reducer.Point;
 
 public class LineTest {
     
