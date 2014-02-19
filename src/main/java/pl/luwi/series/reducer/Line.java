@@ -3,10 +3,10 @@ package pl.luwi.series.reducer;
 import java.util.Arrays;
 import java.util.List;
 
-public class Line {
+public class Line<P extends Point> {
     
-    private Point start;
-    private Point end;
+    private P start;
+    private P end;
     
     private double dx;
     private double dy;
@@ -14,7 +14,7 @@ public class Line {
     private double exsy;
     private  double length;
     
-    public Line(Point start, Point end) {
+    public Line(P start, P end) {
         this.start = start;
         this.end = end;
         dx = start.getX() - end.getX();
@@ -24,11 +24,12 @@ public class Line {
         length = Math.sqrt(dx*dx + dy*dy);
     }
     
-    public List<Point> asList() {
+    @SuppressWarnings("unchecked")
+    public List<P> asList() {
         return Arrays.asList(start, end);
     }
     
-    double distance(Point p) {
+    double distance(P p) {
         return Math.abs(dy * p.getX() - dx * p.getY() + sxey - exsy) / length;
     }
 }
