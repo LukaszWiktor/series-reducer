@@ -60,4 +60,49 @@ public class SeriesReducerTest {
     public void shouldValidateEpsilon(double invalidEpsilon) {
         SeriesReducer.reduce(asList(p(1, 1), p(2, 2), p(3, 3)), invalidEpsilon);
     }
+    
+    @DataProvider(name="automaticEpsilon")
+    public Object[][] automaticEpsilonDataProvier() {
+        List<Point> points1 = new NamedArrayList<Point>("y = 2*x + 1");
+        for (int x = 0; x < 100; x++) {
+            points1.add(p(x, 2*x + 1));;
+        }
+        
+        List<Point> points2 = new NamedArrayList<Point>("y = (x-3)*(x-5)*(x-7)");
+        for (double x = 0; x < 10; x += 0.1) {
+            points2.add(p(x, (x-3)*(x-5)*(x-7)));
+        }
+        
+        List<Point> points3 = new NamedArrayList<Point>("y = cos(x^2 - 1)");
+        for (double x = 0.0; x < 4.0; x += 0.05) {
+            points3.add(p(x, Math.cos(x*x + 1)));
+        }
+        
+        List<Point> points4 = new NamedArrayList<Point>("y = 10^6 * 0.9^x");
+        for (int x = 0; x < 1000; x++) {
+            points4.add(p(x, 10e6 * Math.pow(0.9, x)));
+        }
+        
+        return new Object[][]{
+                {points1},
+                {points2},
+                {points3},
+                {points4}};
+    }
+    
+    // this test doesn't assert anything
+    // it just checks results of using maximum or average of deviations as the epsilon parameter
+    @Test(dataProvider="automaticEpsilon")
+    public void testAutomaticEpsilon(NamedArrayList<Point> points) {
+        double[] deviations = EpsilonHelper.deviations(points);
+        double maxDev = EpsilonHelper.max(deviations);
+        double avgDev = EpsilonHelper.avg(deviations);
+        
+        System.out.println("---------- " + points.getName() + " ----------");
+        List<Point> reduced1 = SeriesReducer.reduce(points, maxDev);
+        System.out.println("maxDev = " + maxDev + " => " + reduced1.size() + " / " + points.size());
+        
+        List<Point> reduced2 = SeriesReducer.reduce(points, avgDev);
+        System.out.println("avgDev = " + avgDev +" => " + reduced2.size() + " / " + points.size());
+    }    
 }
