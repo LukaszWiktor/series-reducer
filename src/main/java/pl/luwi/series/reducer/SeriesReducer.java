@@ -14,8 +14,8 @@ public class SeriesReducer {
      *          allowed margin of the resulting curve, has to be > 0
      */
     public static <P extends Point> List<P> reduce(List<P> points, double epsilon) {
-        if (epsilon <= 0) {
-            throw new IllegalArgumentException("Epsilon has to be greater than 0.");
+        if (epsilon < 0) {
+            throw new IllegalArgumentException("Epsilon cannot be less then 0.");
         }
         double furthestPointDistance = 0.0;
         int furthestPointIndex = 0;

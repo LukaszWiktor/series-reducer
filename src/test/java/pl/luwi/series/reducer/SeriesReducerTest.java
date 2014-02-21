@@ -9,9 +9,6 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import pl.luwi.series.reducer.Point;
-import pl.luwi.series.reducer.SeriesReducer;
-
 public class SeriesReducerTest {
   
     @DataProvider(name="series")
@@ -56,7 +53,7 @@ public class SeriesReducerTest {
     
     @DataProvider(name="invalidEpsilon")
     public Object[][] invalidEpsilonDataProvider() {
-        return new Object[][] {{0.0}, {-0.1}, {-2.0}};
+        return new Object[][] {{-0.1}, {-2.0}};
     }
     
     @Test(dataProvider="invalidEpsilon", expectedExceptions=IllegalArgumentException.class)
